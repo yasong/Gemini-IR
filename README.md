@@ -32,6 +32,7 @@ ALL .py files are implemented with python3.7.3 with IDA Pro 7.5 (IDAPython with 
 
 ## Prepration and Data
 
+Download the Gemini-IR and cross-tools from [here](https://drive.google.com/drive/folders/1H7c8XTchze4qxOFEFEbONsssXT-OMSb7) and extract them into corresponding directories.
 Unzip the Gemini-IR by running:
 
 ```bash
@@ -45,6 +46,9 @@ Unzip the data by running:
 unzip data.zip
 ```
 The data.zip contains the `.json` files of features to be trained.
+
+## hints:
+
 ### Extract the features from assembly instructions
 
 <pre>
