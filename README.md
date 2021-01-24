@@ -47,7 +47,18 @@ unzip data.zip
 ```
 The data.zip contains the `.json` files of features to be trained.
 
-## hints:
+The cross-tools are built with [buildroot-2016.08](http://buildroot.net/downloads/).
+To use the cross-compiler, you should remove the `staging` link, and add new link to the directory `[your path]/host/usr/powerpc-buildroot-linux-gnu/sysroot`
+```bash
+cd arm-5.4/host
+rm staging
+ln -sv /home/ghost/crosstool/arm-5.4/host/usr/armeb-buildroot-linux-uclibcgnueabi/sysroot staging
+```
+
+
+## Hints:
+All python scripts are tested with IDA Pro 7.5 (IDAPython 3) and Python v3.7.3.
+Before running the python scripts, you should set the `PATH` environment of `idat.exe` and the corresponding directories path in the python scripts.
 
 ### Extract the features from assembly instructions
 
