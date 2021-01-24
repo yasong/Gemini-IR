@@ -1,6 +1,6 @@
 # IR Matters: Where the features come from affects cross-architecture binary code similarity detection
 
-This repo provides an implementation of the Gemini-IR [] based on [this paper](https://arxiv.org/abs/1708.06525).
+This repo provides an implementation of the Gemini-IR [] based on [Gemini](https://github.com/xiaojunxu/dnn-binary-code-similarity).
 
 ALL .py files are implemented with python3.7.3 with IDA Pro 7.5 (IDAPython with python3)
 
