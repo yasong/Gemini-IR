@@ -128,4 +128,4 @@ The `.svg` files are saved in `res` directory.
 python count_block_nums.py
 ```
 or run `python count_block_nums.py -h` to check the optional arguments.
-![All distributed](https://raw.githubusercontent.com/yasong/Gemini-IR/master/res/all_distr.svg?token=ACKOVLY6OKILVGWGAMOQ4FTABUKVA)
+![All distributed](https://raw.githubusercontent.com/yasong/Gemini-IR/master/res/all_distr.svg)
