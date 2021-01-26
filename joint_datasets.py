@@ -14,7 +14,7 @@ import json
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--lib', type=str, default='SSL',
-    help='library {SSL, Bin, Core, SSL_vex, Bin_vex, Core_vex} for training')
+    help='library {SSL, Bin, Core, SSL_vex, Bin_vex, Core_vex, Busybox, Busybox_vex} for training')
     parser.add_argument('--fea_dim', type=int, default=7, help='feature dimension')
 
     args = parser.parse_args()
@@ -45,6 +45,14 @@ if __name__ == "__main__":
     elif LIB == 'Core_vex':
         PARENT_PATH = glob.glob("G:\\Projects\\Similarity\\Gemini-IR\\coreutils_vex_feas_{}\\*".format(NODE_FEATURE_DIM))
         DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\data\\acfgCore_{}_vex\\".format(NODE_FEATURE_DIM)
+
+    elif LIB == 'Busybox':
+        PARENT_PATH = glob.glob("G:\\Projects\\Similarity\\Gemini-IR\\busybox_feas_{}\\*".format(NODE_FEATURE_DIM))
+        DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\data\\acfgBusybox_{}\\".format(NODE_FEATURE_DIM)
+
+    elif LIB == 'Busybox_vex':
+        PARENT_PATH = glob.glob("G:\\Projects\\Similarity\\Gemini-IR\\busybox_vex_feas_{}\\*".format(NODE_FEATURE_DIM))
+        DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\data\\acfgBusybox_{}_vex\\".format(NODE_FEATURE_DIM)
 
 
     for PATH in PARENT_PATH:

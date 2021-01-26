@@ -46,7 +46,7 @@ if __name__ == "__main__":
     parser.add_argument('--fea_dim', type=int, default=7, help='feature dimension')
 
     args = parser.parse_args()
-    LIB = args.lib
+    #LIB = args.lib
     NODE_FEATURE_DIM = args.fea_dim
     PARENT_PATH = ''
     SRC_PATH = ''
@@ -87,6 +87,11 @@ if __name__ == "__main__":
     FILE_JSON = glob.glob(SRC_PATH)
     MAX_NUM_CORE, core_np_nums = read_graph(FILE_JSON)
 
+
+    SRC_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\data\\acfgBusybox_{}_vex\\*".format(NODE_FEATURE_DIM)
+    FILE_JSON = glob.glob(SRC_PATH)
+    MAX_NUM_BUSYBOX, busybox_np_nums = read_graph(FILE_JSON)
+
     plt.figure(figsize=(8,8))
     #x_axis = np.arange(100)
     
@@ -95,7 +100,7 @@ if __name__ == "__main__":
     plt.plot(np.arange(MAX_NUM_SSL), ssl_np_nums, color='red', label='{} basic-block numbers distributed'.format('openssl'), linestyle='-')
     plt.plot(np.arange(MAX_NUM_BIN), bin_np_nums, color='green', label='{} basic-block numbers distributed'.format('binutils'), linestyle='-')
     plt.plot(np.arange(MAX_NUM_CORE), core_np_nums, color='blue', label='{} basic-block numbers distributed'.format('coreutils'), linestyle='-')
-
+    plt.plot(np.arange(MAX_NUM_BUSYBOX), busybox_np_nums, color='cyan', label='{} basic-block numbers distributed'.format('busybox'), linestyle='-')
 
     #plt.plot([0, 1], [0, 1], 'k--', lw=lw)
     plt.tick_params(labelsize=15)
@@ -105,7 +110,7 @@ if __name__ == "__main__":
     plt.ylabel('Times (log)', fontsize=20)
 
 
-    plt.rcParams.update({"font.size":15})
+    plt.rcParams.update({"font.size":13})
     plt.legend(loc="upper right")
     #plt.show()
     savefig('res/' + 'all' + '_distr.svg', format='svg', dpi = 600)

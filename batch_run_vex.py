@@ -55,10 +55,11 @@ if __name__ == "__main__":
 
 
     parser.add_argument('--lib', type=str, default='SSL',
-    help='library {SSL, Bin, Core, SSL_vex, Bin_vex, Core_vex} for training')
+    help='library {SSL, Bin, Core, SSL_vex, Bin_vex, Core_vex, Busybox, Busybox_vex} for training')
     parser.add_argument('--dele', type=int, default=1,
     help='0 or 1 for deling target path')
     parser.add_argument('--fea_dim', type=int, default=7, help='feature dimension')
+    parser.add_argument('--core', type=int, default=6, help='core numbers')
 
     args = parser.parse_args()
     LIB = args.lib
@@ -100,10 +101,20 @@ if __name__ == "__main__":
         DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\coreutils_vex_feas_{}\\".format(NODE_FEATURE_DIM)
         SCRIPT_PATH = "preprocessing_ida_vex.py"
 
+    elif LIB == 'Busybox':
+        PARENT_PATH = glob.glob("G:\\Projects\\Similarity\\Gemini-IR\\busybox\\*")
+        DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\busybox_feas_{}\\".format(NODE_FEATURE_DIM)
+        SCRIPT_PATH = "preprocessing_ida.py"
+
+    elif LIB == 'Busybox_vex':
+        PARENT_PATH = glob.glob("G:\\Projects\\Similarity\\Gemini-IR\\busybox\\*")
+        DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\busybox_vex_feas_{}\\".format(NODE_FEATURE_DIM)
+        SCRIPT_PATH = "preprocessing_ida_vex.py"
+
     for PATH in PARENT_PATH:
         ELF_PATH = ELF_PATH + glob.glob(PATH +'\\*')
 
-    core_num = 6
+    core_num = args.core
     start = 0
     i = 0
     #multi threads

@@ -16,6 +16,8 @@ if __name__ == "__main__":
     SSL_PATH = glob.glob("G:\\Projects\\Similarity\\Gemini-IR\\openssl\\*")
     BIN_PATH = glob.glob("G:\\Projects\\Similarity\\Gemini-IR\\binutils\\*")
     CORE_PATH = glob.glob("G:\\Projects\\Similarity\\Gemini-IR\\coreutils\\*")
+    BUSYBOX_PATH = glob.glob("G:\\Projects\\Similarity\\Gemini-IR\\busybox\\*")
+    
 
     for path in SSL_PATH:
         #print(path)
@@ -25,5 +27,9 @@ if __name__ == "__main__":
         os.system("del /q " + path + "\\*.idb")
 
     for path in CORE_PATH:
+        #print(path)
+        os.system("del /q " + path + "\\*.idb")
+    
+    for path in BUSYBOX_PATH:
         #print(path)
         os.system("del /q " + path + "\\*.idb")

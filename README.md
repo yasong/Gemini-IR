@@ -1,4 +1,5 @@
-# IR Matters: Where the features come from affects cross-architecture binary code similarity detection
+# IR Matters: Where the Features Come From Affects Cross-Architecture Binary Code Similarity Detection
+
 
 This repo provides an implementation of the Gemini-IR [] based on [Gemini](https://github.com/xiaojunxu/dnn-binary-code-similarity).
 
@@ -49,12 +50,21 @@ The data.zip contains the `.json` files of features to be trained.
 
 The cross-tools are built with [buildroot-2016.08](http://buildroot.net/downloads/).
 To use the cross-compiler, you should remove the `staging` link, and add new link to the directory `[your path]/host/usr/powerpc-buildroot-linux-gnu/sysroot`
+
 ```bash
 cd arm-5.4/host
 rm staging
 ln -sv /home/ghost/crosstool/arm-5.4/host/usr/armeb-buildroot-linux-uclibcgnueabi/sysroot staging
 ```
 
+Open source libaries used in this repo:
+```
+openssl (version 1.0.1f and 1.0.1u) 
+binutils (version 2.26 and 2.28)
+coreutils (version 8.29 and 8.31)
+busybox (version 1.23.2 and 1.28.3)
+```
+GCC version v5.4
 
 ## Hints:
 All python scripts are tested with IDA Pro 7.5 (IDAPython 3) and Python v3.7.3.
@@ -128,3 +138,4 @@ The `.svg` files are saved in `res` directory.
 python count_block_nums.py
 ```
 or run `python count_block_nums.py -h` to check the optional arguments.
+![All distributed](./res/all_distr.svg)

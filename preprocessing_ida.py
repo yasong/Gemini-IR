@@ -22,6 +22,7 @@ if __name__ == '__main__':
     # auto_wait()
     segstart = get_first_seg()
     segend = get_segm_end(segstart)
+    
     while True:
         plan_and_wait(segstart, segend)
         segstart = get_next_seg(segstart)
@@ -30,8 +31,10 @@ if __name__ == '__main__':
             break
     type_in = open('type.temp', 'r')
     LIB = type_in.readline().strip()
-    fea_dim = int(LIB.split('_')[1])
+    fea_dim = int(LIB.split('_')[-1])
+    LIB = LIB.strip('_{}'.format(fea_dim))
     type_in.close()
+    DST_PATH = ''
     if LIB == 'SSL':
         DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\openssl_feas_{}\\".format(fea_dim)
 
@@ -40,6 +43,9 @@ if __name__ == '__main__':
 
     elif LIB == 'Core':
         DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\coreutils_feas_{}\\".format(fea_dim)
+
+    elif LIB == 'Busybox':
+        DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\busybox_feas_{}\\".format(fea_dim)
 
 
         # args = parse_command()

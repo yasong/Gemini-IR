@@ -36,7 +36,7 @@ parser.add_argument('--load_path', type=str,
 parser.add_argument('--log_path', type=str, default=None,
         help='path for training log')
 parser.add_argument('--lib', type=str, default='SSL',
-        help='library {SSL, Bin, Core, SSL_vex, Bin_vex, Core_vex} for training')
+        help='library {SSL, Bin, Core, SSL_vex, Bin_vex, Core_vex, Busybox, Busybox_vex} for training')
 
 
 
@@ -111,10 +111,26 @@ if __name__ == '__main__':
 
     elif LIB == 'Core_vex':
         DATA_FILE_NAME = './data/acfgCore_{}_vex/'.format(NODE_FEATURE_DIM)
-        npy_name = 'data/acfgCore_{}_{}_vex_'.format(NODE_FEATURE_DIM,BATCH_SIZE)
-        res_name = 'res/acfgCore_{}_{}_vex_'.format(NODE_FEATURE_DIM,BATCH_SIZE)
-        LOAD_PATH = './saved_model/acfgCore_{}_{}_vex/graphnn-model_best'.format(NODE_FEATURE_DIM,BATCH_SIZE)
+        npy_name = 'data/acfgCore_{}_vex_'.format(NODE_FEATURE_DIM)
+        res_name = 'res/acfgCore_{}_vex_'.format(NODE_FEATURE_DIM)
+        LOAD_PATH = './saved_model/acfgCore_{}_vex/graphnn-model_best'.format(NODE_FEATURE_DIM)
         SOFTWARE=('coreutils-8.29-', 'coreutils-8.31-')
+        COMPILER=('armeb-linux', 'i586-linux', 'mips-linux', 'powerpc-linux')
+
+    elif LIB == 'Busybox':
+        DATA_FILE_NAME = './data/acfgBusybox_{}/'.format(NODE_FEATURE_DIM)
+        npy_name = 'data/acfgBusybox_{}_'.format(NODE_FEATURE_DIM)
+        res_name = 'res/acfgBusybox_{}_'.format(NODE_FEATURE_DIM)
+        LOAD_PATH = './saved_model/acfgBusybox_{}/graphnn-model_best'.format(NODE_FEATURE_DIM)
+        SOFTWARE=('busybox-1.23.2-', 'busybox-1.28.3-')
+        COMPILER=('armeb-linux', 'i586-linux', 'mips-linux', 'powerpc-linux')
+
+    elif LIB == 'Busybox_vex':
+        DATA_FILE_NAME = './data/acfgBusybox_{}_vex/'.format(NODE_FEATURE_DIM)
+        npy_name = 'data/acfgBusybox_{}_vex_'.format(NODE_FEATURE_DIM)
+        res_name = 'res/acfgBusybox_{}_vex_'.format(NODE_FEATURE_DIM)
+        LOAD_PATH = './saved_model/acfgBusybox_{}_vex/graphnn-model_best'.format(NODE_FEATURE_DIM)
+        SOFTWARE=('busybox-1.23.2-', 'busybox-1.28.3-')
         COMPILER=('armeb-linux', 'i586-linux', 'mips-linux', 'powerpc-linux')
 
     OPTIMIZATION=('-O0', '-O1','-O2','-O3')

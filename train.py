@@ -120,6 +120,22 @@ if __name__ == '__main__':
         SOFTWARE=('coreutils-8.29-', 'coreutils-8.31-')
         COMPILER=('armeb-linux', 'i586-linux', 'mips-linux', 'powerpc-linux')
 
+    elif LIB == 'Busybox':
+        DATA_FILE_NAME = './data/acfgBusybox_{}/'.format(NODE_FEATURE_DIM)
+        npy_name = 'data/acfgBusybox_{}_'.format(NODE_FEATURE_DIM)
+        res_name = 'res/acfgBusybox_{}_'.format(NODE_FEATURE_DIM)
+        SAVE_PATH = './saved_model/acfgBusybox_{}/graphnn-model'.format(NODE_FEATURE_DIM)
+        SOFTWARE=('busybox-1.23.2-', 'busybox-1.28.3-')
+        COMPILER=('armeb-linux', 'i586-linux', 'mips-linux', 'powerpc-linux')
+
+    elif LIB == 'Busybox_vex':
+        DATA_FILE_NAME = './data/acfgBusybox_{}_vex/'.format(NODE_FEATURE_DIM)
+        npy_name = 'data/acfgBusybox_{}_vex_'.format(NODE_FEATURE_DIM)
+        res_name = 'res/acfgBusybox_{}_vex_'.format(NODE_FEATURE_DIM)
+        SAVE_PATH = './saved_model/acfgBusybox_{}_vex/graphnn-model'.format(NODE_FEATURE_DIM)
+        SOFTWARE=('busybox-1.23.2-', 'busybox-1.28.3-')
+        COMPILER=('armeb-linux', 'i586-linux', 'mips-linux', 'powerpc-linux')
+
     OPTIMIZATION=('-O0', '-O1','-O2','-O3')
  
     

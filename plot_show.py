@@ -33,7 +33,7 @@ def plot_roc(vex_test_fpr, vex_test_tpr, test_fpr, test_tpr, DIM_7, DIM_9 = 0, l
         savefig('res/' + lib + '_{}_roc.svg'.format(DIM_7), format='svg', dpi = 600)
     else:
         savefig('res/' + lib + '_{}_roc.svg'.format(DIM_9), format='svg', dpi = 600)
-    
+    plt.close()
 
 
 
@@ -63,6 +63,7 @@ def plot_loss(vex_loss,loss, DIM_7, DIM_9 = 0,lib = 'SSL'):
         savefig('res/' + lib + '_{}_loss.svg'.format(DIM_7), format='svg', dpi = 600)
     else:
         savefig('res/' + lib + '_{}_loss.svg'.format(DIM_9), format='svg', dpi = 600)
+    plt.close()
     #plt.show()
 
 def plot_auc(vex_auc, auc, DIM_7, DIM_9 = 0, lib = 'SSL'):
@@ -90,6 +91,8 @@ def plot_auc(vex_auc, auc, DIM_7, DIM_9 = 0, lib = 'SSL'):
         savefig('res/' + lib + '_{}_auc.svg'.format(DIM_7), format='svg', dpi = 600)
     else:
         savefig('res/' + lib + '_{}_auc.svg'.format(DIM_9), format='svg', dpi = 600)
+    
+    plt.close()
 
 
 def plot_orgi_ir_7(DIM_7):
@@ -125,6 +128,7 @@ def plot_orgi_ir_7(DIM_7):
     plot_auc(acfgCore_vex_auc, acfgCore_auc, DIM_7, 0, 'Core')
 
 
+
     acfgBin_vex_test_fpr = np.load('res/acfgBin_{}_vex_test_fpr.npy'.format(DIM_7))
     acfgBin_vex_test_tpr = np.load('res/acfgBin_{}_vex_test_tpr.npy'.format(DIM_7))
     acfgBin_test_fpr = np.load('res/acfgBin_{}_test_fpr.npy'.format(DIM_7))
@@ -140,6 +144,23 @@ def plot_orgi_ir_7(DIM_7):
 
 
     plot_auc(acfgBin_vex_auc, acfgBin_auc, DIM_7, 0, 'Bin')
+
+    acfgBusybox_vex_test_fpr = np.load('res/acfgBusybox_{}_vex_test_fpr.npy'.format(DIM_7))
+    acfgBusybox_vex_test_tpr = np.load('res/acfgBusybox_{}_vex_test_tpr.npy'.format(DIM_7))
+    acfgBusybox_test_fpr = np.load('res/acfgBusybox_{}_test_fpr.npy'.format(DIM_7))
+    acfgBusybox_test_tpr = np.load('res/acfgBusybox_{}_test_tpr.npy'.format(DIM_7))
+    plot_roc(acfgBusybox_vex_test_fpr, acfgBusybox_vex_test_tpr, acfgBusybox_test_fpr, acfgBusybox_test_tpr, DIM_7, 0, 'Busybox')
+
+    acfgBusybox_vex_loss = np.load('res/acfgBusybox_{}_vex_loss.npy'.format(DIM_7))
+    acfgBusybox_loss = np.load('res/acfgBusybox_{}_loss.npy'.format(DIM_7))
+    plot_loss(acfgBusybox_vex_loss, acfgBusybox_loss, DIM_7, 0, 'Busybox')
+    
+    acfgBusybox_vex_auc = np.load('res/acfgBusybox_{}_vex_valid_auc.npy'.format(DIM_7))
+    acfgBusybox_auc = np.load('res/acfgBusybox_{}_valid_auc.npy'.format(DIM_7))
+
+
+    plot_auc(acfgBusybox_vex_auc, acfgBusybox_auc, DIM_7, 0, 'Busybox')
+    
     #plt.show()
 
 
@@ -189,6 +210,23 @@ def plot_ir_7_9(DIM_9):
     acfgBin_vex_auc = np.load('res/acfgBin_{}_vex_valid_auc.npy'.format(DIM_9))
     acfgBin_auc = np.load('res/acfgBin_{}_vex_valid_auc.npy'.format(DIM_7))
     plot_auc(acfgBin_vex_auc, acfgBin_auc, DIM_7, DIM_9, 'Bin')
+
+
+
+    acfgBusybox_vex_test_fpr = np.load('res/acfgBusybox_{}_vex_test_fpr.npy'.format(DIM_9))
+    acfgBusybox_vex_test_tpr = np.load('res/acfgBusybox_{}_vex_test_tpr.npy'.format(DIM_9))
+    acfgBusybox_test_fpr = np.load('res/acfgBusybox_{}_vex_test_fpr.npy'.format(DIM_7))
+    acfgBusybox_test_tpr = np.load('res/acfgBusybox_{}_vex_test_tpr.npy'.format(DIM_7))
+    plot_roc(acfgBusybox_vex_test_fpr, acfgBusybox_vex_test_tpr, acfgBusybox_test_fpr, acfgBusybox_test_tpr, DIM_7, DIM_9, 'Busybox')
+
+    acfgBusybox_vex_loss = np.load('res/acfgBusybox_{}_vex_loss.npy'.format(DIM_9))
+    acfgBusybox_loss = np.load('res/acfgBusybox_{}_vex_loss.npy'.format(DIM_7))
+    plot_loss(acfgBusybox_vex_loss, acfgBusybox_loss, DIM_7, DIM_9, 'Busybox')
+    
+    acfgBusybox_vex_auc = np.load('res/acfgBusybox_{}_vex_valid_auc.npy'.format(DIM_9))
+    acfgBusybox_auc = np.load('res/acfgBusybox_{}_vex_valid_auc.npy'.format(DIM_7))
+    plot_auc(acfgBusybox_vex_auc, acfgBusybox_auc, DIM_7, DIM_9, 'Busybox')
+
     #plt.show()
 
 

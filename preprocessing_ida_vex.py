@@ -33,7 +33,7 @@ if __name__ == '__main__':
     type_in = open('type.temp', 'r')
     LIB = type_in.readline().strip()
     fea_dim = int(LIB.split('_')[-1])
-    print(fea_dim)
+    #print(fea_dim)
     LIB = LIB.strip('_{}'.format(fea_dim))
     type_in.close()
     DST_PATH = ''
@@ -45,6 +45,9 @@ if __name__ == '__main__':
 
     elif LIB == 'Core_vex':
         DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\coreutils_vex_feas_{}\\".format(fea_dim)
+
+    elif LIB == 'Busybox_vex':
+        DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\busybox_vex_feas_{}\\".format(fea_dim)
 
     #DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\binutils_vex_feas\\"
     #DST_PATH = "G:\\Projects\\Similarity\\Gemini-IR\\coreutils_vex_feas\\"
