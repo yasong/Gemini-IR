@@ -301,3 +301,11 @@ if __name__ == "__main__":
     blocks = new_blocks
     features = get_func_features(func, blocks)  # get function features and successor and so on.
     print(features["features"])
+    funcs_features = []
+    funcs_features.append(features)
+    binary_name = get_root_filename() + '.json'
+    out = open(binary_name, "w")
+    for res in funcs_features:
+        res = str(res).replace('\'', '\"')
+        print(res, file=out)
+    out.close()

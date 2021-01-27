@@ -1,0 +1,4 @@
+{"src": "diff-in-cross/i586-alps-lib-touper.txt", "n_num": 5, "succs": [[1, 4], [2], [2, 3], [4], []], "features": [[7, 0, 4, 2, 0, 26, 7], [8, 0, 3, 5, 1, 18, 6], [5, 0, 3, 4, 0, 23, 5], [1, 0, 1, 1, 0, 3, 1], [6, 0, 0, 4, 0, 20, 7]], "fname": "alps_lib_toupper"}
+{"src": "diff-in-cross/mips-alps-lib-touper.txt", "n_num": 4, "succs": [[1, 3], [2], [2, 3], []], "features": [[2, 0, 3, 1, 0, 10, 1], [3, 0, 2, 3, 0, 9, 3], [3, 0, 2, 0, 0, 9, 3], [0, 0, 0, 0, 0, 8, 2]], "fname": "alps_lib_toupper"}
+{"src": "diff-in-cross/armeb-alps-lib-touper.txt", "n_num": 4, "succs": [[1, 3], [2], [2, 3], []], "features": [[8, 0, 3, 2, 0, 25, 6], [2, 0, 2, 5, 1, 16, 6], [4, 0, 2, 3, 0, 17, 4], [8, 0, 0, 6, 0, 22, 7]], "fname": "alps_lib_toupper"}
+{"src": "diff-in-cross/powerpc-alps-lib-touper.txt", "n_num": 4, "succs": [[1, 3], [2], [2, 3], []], "features": [[0, 0, 3, 2, 0, 9, 0], [4, 0, 2, 1, 1, 8, 4], [0, 0, 2, 0, 0, 6, 0], [2, 0, 0, 0, 0, 9, 1]], "fname": "alps_lib_toupper"}

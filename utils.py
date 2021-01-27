@@ -273,3 +273,59 @@ def get_auc_epoch(model, graphs, classes, batch_size, load_data=None):
 
     return model_auc, fpr, tpr, thres
 
+
+def read_two_graph(FILENAME):
+    graphs = []
+    with open(FILENAME) as inf:
+        for line in inf:
+            g_info = json.loads(line.strip())
+            label = g_info['fname']
+            cur_graph = graph(g_info['n_num'], label, g_info['src'])
+            for u in range(g_info['n_num']):
+                cur_graph.features[u] = np.array(g_info['features'][u])
+                for v in g_info['succs'][u]:
+                    cur_graph.add_edge(u, v)
+            graphs.append(cur_graph)
+    return graphs
+
+
+def get_data(graphs, M = 1):
+    g0 = graphs[0]
+    g1 = graphs[1]
+    y_input = np.zeros((M), dtype='float16')
+    if g0.label == g1.label:
+        y_input[0] = 1
+    else:
+        y_input[0] = 0
+    
+    maxN0 = g0.node_num
+    maxN1 = g1.node_num
+    feature_dim = len(g0.features[0])
+    X1_input = np.zeros((M, maxN0, feature_dim), dtype='float16') #生成M个maxN1 * feature_dim的数组
+    X2_input = np.zeros((M, maxN1, feature_dim), dtype='float16')
+    node1_mask = np.zeros((M, maxN0, maxN0), dtype='float16')
+    node2_mask = np.zeros((M, maxN1, maxN1), dtype='float16')
+    
+    for u in range(g0.node_num):
+        X1_input[M-1, u, :] = np.array(g0.features[u] )
+        for v in g0.succs[u]:
+            #print(u,v)
+            node1_mask[M-1, u, v] = 1
+    for u in range(g1.node_num):
+        X2_input[M-1, u, :] = np.array(g1.features[u] )
+        for v in g1.succs[u]:
+            node2_mask[M-1, u, v] = 1
+
+    return X1_input,X2_input,node1_mask,node2_mask, y_input
+
+
+
+def get_diff(model, graphs):
+    if len(graphs) != 2:
+        print("Incorrect quantity...")
+        return -1, -1
+    X1, X2, m1, m2, y  = get_data(graphs, 1)
+    diff = - model.calc_diff(X1, X2, m1, m2)
+    loss = model.calc_loss(X1, X2, m1, m2, y)
+    print(diff[0], loss)
+    return float(diff[0]), loss

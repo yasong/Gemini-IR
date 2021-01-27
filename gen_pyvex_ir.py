@@ -105,7 +105,7 @@ def get_func_vex_whole(ea):
         if is_inBlock(bb[0], func.start_ea, func.end_ea) and is_inBlock(bb[1], func.start_ea, func.end_ea + 1):
             new_blocks.append(bb)
     blocks = new_blocks
-    
+
     inst_arch = get_vex_arch()
     func_irsb = pyvex.IRSB(None, func.start_ea, arch = inst_arch)
     for bb in blocks:
@@ -249,6 +249,7 @@ def main():
     blocks = new_blocks
     node = 0
     succs = get_block_succs(blocks)
+    '''
     for bb in blocks:
         bb_irsb = get_block_vex_list(bb[0], bb[1])
         #print(type(bb_irsb))
@@ -256,13 +257,24 @@ def main():
         node += 1
         for irsb in bb_irsb:
             func_irsb.append(irsb)
-    for irsb in func_irsb:
+    '''
+    dims = 7
+    features = get_func_features(func, blocks, dims)
+    #for irsb in func_irsb:
         #irsb.pp()
         #print(irsb.statements)
-        print(irsb)
+        #print(irsb)
     if len(blocks) < len(func_irsb):
         show_log("Found implicit 'branch' instruction...")
-    print(features)
+    print(features["features"])
+    funcs_features = []
+    funcs_features.append(features)
+    binary_name = get_root_filename() + '_vex.json'
+    out = open(binary_name, "w")
+    for res in funcs_features:
+        res = str(res).replace('\'', '\"')
+        print(res, file=out)
+    out.close()
     '''
     func = idaapi.get_func(ea)
     blocks = [(v.start_ea, v.end_ea) for v in idaapi.FlowChart(func)]
