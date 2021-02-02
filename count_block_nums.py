@@ -97,10 +97,10 @@ if __name__ == "__main__":
     
     plt.axes(xscale = "log", yscale = "log")
     #plt.axes()
-    plt.plot(np.arange(MAX_NUM_SSL), ssl_np_nums, color='red', label='{} basic-block numbers distributed'.format('openssl'), linestyle='-')
-    plt.plot(np.arange(MAX_NUM_BIN), bin_np_nums, color='green', label='{} basic-block numbers distributed'.format('binutils'), linestyle='-')
-    plt.plot(np.arange(MAX_NUM_CORE), core_np_nums, color='blue', label='{} basic-block numbers distributed'.format('coreutils'), linestyle='-')
-    plt.plot(np.arange(MAX_NUM_BUSYBOX), busybox_np_nums, color='cyan', label='{} basic-block numbers distributed'.format('busybox'), linestyle='-')
+    plt.plot(np.arange(MAX_NUM_SSL), ssl_np_nums, color='red', label='{} basic-block numbers'.format('openssl'), linestyle='-')
+    plt.plot(np.arange(MAX_NUM_BIN), bin_np_nums, color='green', label='{} basic-block numbers'.format('binutils'), linestyle='-')
+    plt.plot(np.arange(MAX_NUM_CORE), core_np_nums, color='blue', label='{} basic-block numbers'.format('coreutils'), linestyle='-')
+    plt.plot(np.arange(MAX_NUM_BUSYBOX), busybox_np_nums, color='cyan', label='{} basic-block numbers'.format('busybox'), linestyle='-')
 
     #plt.plot([0, 1], [0, 1], 'k--', lw=lw)
     plt.tick_params(labelsize=15)
