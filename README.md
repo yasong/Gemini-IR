@@ -1,4 +1,4 @@
-# IR Matters: Where the Features Come From Affects Cross-Architecture Binary Code Similarity Detection
+# IR Matters: Feature Engineering for Cross-Architecture Binary Code Similarity Detection
 
 
 This repo provides an implementation of the Gemini-IR [] based on [Gemini](https://github.com/xiaojunxu/dnn-binary-code-similarity).
